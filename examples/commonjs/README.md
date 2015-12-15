@@ -73,26 +73,17 @@ exports.add = function() {
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { throw err; };
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "js/";
-
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!********************!*\
-  !*** ./example.js ***!
-  \********************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var inc = __webpack_require__(/*! ./increment */ 1).increment;
-	var a = 1;
-	inc(a); // 2
-
-/***/ },
-/* 1 */
 /*!**********************!*\
   !*** ./increment.js ***!
   \**********************/
@@ -102,6 +93,17 @@ exports.add = function() {
 	exports.increment = function(val) {
 	    return add(val, 1);
 	};
+
+/***/ },
+/* 1 */
+/*!********************!*\
+  !*** ./example.js ***!
+  \********************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var inc = __webpack_require__(/*! ./increment */ 0).increment;
+	var a = 1;
+	inc(a); // 2
 
 /***/ },
 /* 2 */
@@ -127,33 +129,33 @@ exports.add = function() {
 ## Uncompressed
 
 ```
-Hash: f20c1cdaf768293603f5
-Version: webpack 1.9.10
-Time: 69ms
+Hash: c69135c718a10af3b5e2
+Version: webpack 2.0.1-beta
+Time: 166ms
     Asset     Size  Chunks             Chunk Names
-output.js  2.15 kB       0  [emitted]  main
-chunk    {0} output.js (main) 329 bytes [rendered]
-    > main [0] ./example.js 
-    [0] ./example.js 69 bytes {0} [built]
-    [1] ./increment.js 98 bytes {0} [built]
-        cjs require ./increment [0] ./example.js 1:10-32
-    [2] ./math.js 162 bytes {0} [built]
-        cjs require ./math [1] ./increment.js 1:10-27
+output.js  2.28 kB       0  [emitted]  main
+chunk    {0} output.js (main) 318 bytes [rendered]
+    > main [1] ./example.js 
+    [0] ./increment.js 95 bytes {0} [built]
+        cjs require ./increment [1] ./example.js 1:10-32
+    [1] ./example.js 67 bytes {0} [built]
+    [2] ./math.js 156 bytes {0} [built]
+        cjs require ./math [0] ./increment.js 1:10-27
 ```
 
 ## Minimized (uglify-js, no zip)
 
 ```
-Hash: f20c1cdaf768293603f5
-Version: webpack 1.9.10
-Time: 197ms
+Hash: c69135c718a10af3b5e2
+Version: webpack 2.0.1-beta
+Time: 317ms
     Asset       Size  Chunks             Chunk Names
-output.js  419 bytes       0  [emitted]  main
-chunk    {0} output.js (main) 329 bytes [rendered]
-    > main [0] ./example.js 
-    [0] ./example.js 69 bytes {0} [built]
-    [1] ./increment.js 98 bytes {0} [built]
-        cjs require ./increment [0] ./example.js 1:10-32
-    [2] ./math.js 162 bytes {0} [built]
-        cjs require ./math [1] ./increment.js 1:10-27
+output.js  449 bytes       0  [emitted]  main
+chunk    {0} output.js (main) 318 bytes [rendered]
+    > main [1] ./example.js 
+    [0] ./increment.js 95 bytes {0} [built]
+        cjs require ./increment [1] ./example.js 1:10-32
+    [1] ./example.js 67 bytes {0} [built]
+    [2] ./math.js 156 bytes {0} [built]
+        cjs require ./math [0] ./increment.js 1:10-27
 ```
